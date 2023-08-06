@@ -49,10 +49,17 @@
 
 * POSIX is dangerous, BASH is safe. Use double square brackets in bash.
 
-* trivia. `[` is a binary (elf binary) --> ls `which [`
+* trivia. `[` is a binary (elf binary) --> ls `which [`env. `[` is an
+	alternative for `test` the built-in command.
 
 * using single square bracket `[`  is dangerous. good way to be pwned.
 	heard it is vulnerable to shell injections via env variables.
+
+* `[` single bracket still exists for the sake of backward compatibility
+	and POSIX compliance. Use double square brackets.
+
+* a good reference for the differences of `[` and `[[` 
+	https://www.baeldung.com/linux/bash-single-vs-double-brackets
 
 * POSIX does not have `local` variable, BASH has.
 
@@ -111,6 +118,30 @@
 
 * never use extensions on executables on UNIX/Linux
 
-* no floats in bash
+* no floats in bash. use `bc` for arithmetics and stuff
 
-* good old `$#`
+* good old `$#`, `$@`, "$*"
+
+* `set -exo pipefail` 
+
+* `:` colon, is a special built in command also referred to as "empy operator", "null command", "no operation"
+
+* `read -p "custom input" input; echo "your input is $input"`
+
+* `while IFS= read -r line` -r stands for raw input, prevents the backslash to be seen as an escape character.
+
+* `${myArray[@]^^}` transform all elements of an array into uppercase
+
+* `${myArray[*]}` joins all elements into a single string
+
+* `${myArray[RANDOM%${#element}}` you know what this does, that's not the point. it's about POWER of it
+
+* `mapfile` and `readarray` is used interchangeably.
+
+* `${0%%/*}` versus `$(dirname)`
+
+* `/etc/skel`
+
+* `uname` with its flags is an amazing command to learn about UNIX based systems' info
+
+* `[[ -t 0 ]]` vs `case $-` check if the script is running in an interactive terminal
